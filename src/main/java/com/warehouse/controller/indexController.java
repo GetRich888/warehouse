@@ -9,6 +9,7 @@ public class indexController {
 
 	@RequestMapping("/index")
 	public String index() {
+		System.out.println("有基佬开我裤链");
 		return "index";
 	}
 }
