@@ -50,6 +50,7 @@ function getskincookie(){
 }
 /*菜单导航*/
 function Hui_admin_tab(obj){
+	alert($(obj).text());
 	var bStop = false,
 		bStopIndex = 0,
 		href = $(obj).attr('data-href'),
@@ -137,7 +138,7 @@ function creatIframe(href,titleName){
 		$tabNav.css({left:0})
 	}	
 	iframeBox.hide();
-	iframe_box.append('<div class="show_iframe"><div class="loading"></div><iframe frameborder="0" src='+href+'></iframe></div>');
+	iframe_box.append('<div class="show_iframe"><div class="loading"></div><iframe frameborder="0" src=drawboard.jsp?path='+href+'></iframe></div>');
 	var showBox=iframe_box.find('.show_iframe:visible');
 	showBox.find('iframe').load(function(){
 		showBox.find('.loading').hide();
