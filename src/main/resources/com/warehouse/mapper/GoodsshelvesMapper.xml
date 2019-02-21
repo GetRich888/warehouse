@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.GoodsshelvesMapper">
+  <resultMap id="BaseResultMap" type="com.warehouse.pojo.Goodsshelves">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="r_id" jdbcType="INTEGER" property="r_id" />
+    <result column="g_name" jdbcType="VARCHAR" property="g_name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, r_id, g_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goodsshelves
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="getGoodsshelvesList" resultType="int">
+  	SELECT COUNT(1) FROM Goodsshelves
+  </select>
+	<select id="getPageList" resultMap="BaseResultMap">
+		SELECT * FROM Goodsshelves LIMIT #{startIndex},#{pageSize}
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goodsshelves
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.warehouse.pojo.Goodsshelves">
+    insert into goodsshelves (id, r_id, g_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{r_id,jdbcType=INTEGER}, #{g_name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.warehouse.pojo.Goodsshelves">
+    insert into goodsshelves
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="r_id != null">
+        r_id,
+      </if>
+      <if test="g_name != null">
+        g_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="r_id != null">
+        #{r_id,jdbcType=INTEGER},
+      </if>
+      <if test="g_name != null">
+        #{g_name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warehouse.pojo.Goodsshelves">
+    update goodsshelves
+    <set>
+      <if test="r_id != null">
+        r_id = #{r_id,jdbcType=INTEGER},
+      </if>
+      <if test="g_name != null">
+        g_name = #{g_name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warehouse.pojo.Goodsshelves">
+    update goodsshelves
+    set r_id = #{r_id,jdbcType=INTEGER},
+      g_name = #{g_name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

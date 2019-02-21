@@ -1,36 +1,6 @@
 package com.warehouse.tools;
 
 public class PageTool {
-	
-	private int id;
-	private int big;
-	private int small;
-	
-	
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getBig() {
-		return big;
-	}
-
-	public void setBig(int big) {
-		this.big = big;
-	}
-
-	public int getSmall() {
-		return small;
-	}
-
-	public void setSmall(int small) {
-		this.small = small;
-	}
 	//当前页码-来自于用户输入
 	private int currentPageNo = 1;
 	
@@ -38,7 +8,7 @@ public class PageTool {
 	private int totalCount = 0;
 	
 	//页面容量
-	private int pageSize = 100;
+	private int pageSize = 5;
 	
 	//总页数-totalCount/pageSize（+1）
 	private int totalPageCount = 1;
