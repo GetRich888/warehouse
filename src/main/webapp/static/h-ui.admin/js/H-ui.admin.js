@@ -50,7 +50,6 @@ function getskincookie(){
 }
 /*菜单导航*/
 function Hui_admin_tab(obj){
-	alert($(obj).text());
 	var bStop = false,
 		bStopIndex = 0,
 		href = $(obj).attr('data-href'),
