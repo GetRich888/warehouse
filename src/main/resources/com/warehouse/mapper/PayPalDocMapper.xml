@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.dao.PayPalDocMapper">
+  <resultMap id="BaseResultMap" type="com.warehouse.pojo.PayPalDoc">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="documents" jdbcType="VARCHAR" property="documents" />
+    <result column="target" jdbcType="INTEGER" property="target" />
+    <result column="should" jdbcType="DECIMAL" property="should" />
+    <result column="fact" jdbcType="DECIMAL" property="fact" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="makeMan" jdbcType="INTEGER" property="makeMan" />
+    <result column="docType" jdbcType="INTEGER" property="docType" />
+    <result column="isEffective" jdbcType="INTEGER" property="isEffective" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, documents, target, should, fact, date, makeMan, docType, isEffective
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_paypal_doc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_paypal_doc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.warehouse.pojo.PayPalDoc">
+    insert into t_paypal_doc (id, documents, target, 
+      should, fact, date, 
+      makeMan, docType, isEffective
+      )
+    values (#{id,jdbcType=INTEGER}, #{documents,jdbcType=VARCHAR}, #{target,jdbcType=INTEGER}, 
+      #{should,jdbcType=DECIMAL}, #{fact,jdbcType=DECIMAL}, #{date,jdbcType=TIMESTAMP}, 
+      #{makeMan,jdbcType=INTEGER}, #{docType,jdbcType=INTEGER}, #{isEffective,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.warehouse.pojo.PayPalDoc">
+    insert into t_paypal_doc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="documents != null">
+        documents,
+      </if>
+      <if test="target != null">
+        target,
+      </if>
+      <if test="should != null">
+        should,
+      </if>
+      <if test="fact != null">
+        fact,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="makeMan != null">
+        makeMan,
+      </if>
+      <if test="docType != null">
+        docType,
+      </if>
+      <if test="isEffective != null">
+        isEffective,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="documents != null">
+        #{documents,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null">
+        #{target,jdbcType=INTEGER},
+      </if>
+      <if test="should != null">
+        #{should,jdbcType=DECIMAL},
+      </if>
+      <if test="fact != null">
+        #{fact,jdbcType=DECIMAL},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="makeMan != null">
+        #{makeMan,jdbcType=INTEGER},
+      </if>
+      <if test="docType != null">
+        #{docType,jdbcType=INTEGER},
+      </if>
+      <if test="isEffective != null">
+        #{isEffective,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warehouse.pojo.PayPalDoc">
+    update t_paypal_doc
+    <set>
+      <if test="documents != null">
+        documents = #{documents,jdbcType=VARCHAR},
+      </if>
+      <if test="target != null">
+        target = #{target,jdbcType=INTEGER},
+      </if>
+      <if test="should != null">
+        should = #{should,jdbcType=DECIMAL},
+      </if>
+      <if test="fact != null">
+        fact = #{fact,jdbcType=DECIMAL},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="makeMan != null">
+        makeMan = #{makeMan,jdbcType=INTEGER},
+      </if>
+      <if test="docType != null">
+        docType = #{docType,jdbcType=INTEGER},
+      </if>
+      <if test="isEffective != null">
+        isEffective = #{isEffective,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warehouse.pojo.PayPalDoc">
+    update t_paypal_doc
+    set documents = #{documents,jdbcType=VARCHAR},
+      target = #{target,jdbcType=INTEGER},
+      should = #{should,jdbcType=DECIMAL},
+      fact = #{fact,jdbcType=DECIMAL},
+      date = #{date,jdbcType=TIMESTAMP},
+      makeMan = #{makeMan,jdbcType=INTEGER},
+      docType = #{docType,jdbcType=INTEGER},
+      isEffective = #{isEffective,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

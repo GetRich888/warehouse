@@ -76,7 +76,7 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 财务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>
+					<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">账户信息</a></li>
 					<li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
 					<li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
 					<li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
