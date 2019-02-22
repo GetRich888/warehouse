@@ -3,11 +3,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
 
-<div id="mian_window">
+<body id="mian_window">
 	<script type="text/javascript">
 		$(function(){
 			$("#mian_window").load("<%=request.getParameter("path")%>");
 		});
 	</script>
-</div>
+</body>
 
