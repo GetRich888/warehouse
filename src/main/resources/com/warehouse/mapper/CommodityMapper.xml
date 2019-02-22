@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.CommodityMapper">
+  <resultMap id="BaseResultMap" type="com.warehouse.pojo.Commodity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="c_name" jdbcType="VARCHAR" property="c_name" />
+    <result column="commodity_specification" jdbcType="VARCHAR" property="commodity_specification" />
+    <result column="default_price" jdbcType="INTEGER" property="default_price" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, c_name, commodity_specification, default_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from commodity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.warehouse.pojo.Commodity">
+    insert into commodity (id, c_name, commodity_specification, 
+      default_price)
+    values (#{id,jdbcType=INTEGER}, #{c_name,jdbcType=VARCHAR}, #{commodity_specification,jdbcType=VARCHAR}, 
+      #{default_price,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warehouse.pojo.Commodity">
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="c_name != null">
+        c_name,
+      </if>
+      <if test="commodity_specification != null">
+        commodity_specification,
+      </if>
+      <if test="default_price != null">
+        default_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="c_name != null">
+        #{c_name,jdbcType=VARCHAR},
+      </if>
+      <if test="commodity_specification != null">
+        #{commodity_specification,jdbcType=VARCHAR},
+      </if>
+      <if test="default_price != null">
+        #{default_price,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warehouse.pojo.Commodity">
+    update commodity
+    <set>
+      <if test="c_name != null">
+        c_name = #{c_name,jdbcType=VARCHAR},
+      </if>
+      <if test="commodity_specification != null">
+        commodity_specification = #{commodity_specification,jdbcType=VARCHAR},
+      </if>
+      <if test="default_price != null">
+        default_price = #{default_price,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warehouse.pojo.Commodity">
+    update commodity
+    set c_name = #{c_name,jdbcType=VARCHAR},
+      commodity_specification = #{commodity_specification,jdbcType=VARCHAR},
+      default_price = #{default_price,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
