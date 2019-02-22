@@ -3,10 +3,10 @@
 <!-- 分页部分开始 -->
 		<div style="width: 100%;text-align: right;">
 			共${pageTool1.totalCount}条记录&nbsp;&nbsp; ${pageTool1.currentPageNo}/${pageTool1.totalPageCount}页
-				<a href="?currentPageNo=1&pageSize=${pageTool1.pageSize}">首页</a>
-				<a href="?currentPageNo=${pageTool1.prePage}&pageSize=${pageTool1.pageSize}">上一页</a>
-				<a href="?currentPageNo=${pageTool1.nextPage}&pageSize=${pageTool1.pageSize}">下一页</a>
-				<a href="?currentPageNo=${pageTool1.totalPageCount}&pageSize=${pageTool1.pageSize}">最后一页</a>
+				<a href="articleList?currentPageNo=1&pageSize=${pageTool1.pageSize}">首页</a>
+				<a href="articleList?currentPageNo=${pageTool1.prePage}&pageSize=${pageTool1.pageSize}">上一页</a>
+				<a href="articleList?currentPageNo=${pageTool1.nextPage}&pageSize=${pageTool1.pageSize}">下一页</a>
+				<a href="articleList?currentPageNo=${pageTool1.totalPageCount}&pageSize=${pageTool1.pageSize}">最后一页</a>
 			<span class="page-go-form"><label>跳转至</label> 
 			<input type="number" style="width:40px" name="inputPage" id="inputPage" class="page-key">页
 				<button type="button" class="page-btn"
@@ -16,7 +16,7 @@
 		</div>
 		<script type="text/javascript">
 		   function pageLink(page){			   
-			   location.href = "?currentPageNo=" + page+"&pageSize=${pageTool1.pageSize}";
+			   location.href = "articleList?currentPageNo=" + page+"&pageSize=${pageTool1.pageSize}";
 		   }
 		
 		   function pageTo(){
@@ -35,7 +35,7 @@
 				   if (parseInt(page)>parseInt(maxPage)) {
 					   realPage=maxPage;
 					}
-					location.href = "?currentPageNo=" + realPage+"&pageSize=${pageTool1.pageSize}";
+					location.href = "articleList?currentPageNo=" + realPage+"&pageSize=${pageTool1.pageSize}";
 				}
 			}
 		</script>

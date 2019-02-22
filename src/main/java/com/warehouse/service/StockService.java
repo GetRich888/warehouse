@@ -9,5 +9,5 @@ import com.warehouse.pojo.Stock;
 public interface StockService {
 
 	int getStockList();
-    List<Stock> getPageList(Integer currentPageNo,Integer pageSize);
+    List<Stock> getPageList(Integer currentPageNo4,Integer pageSize);
 }

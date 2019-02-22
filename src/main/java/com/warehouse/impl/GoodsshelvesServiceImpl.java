@@ -20,8 +20,8 @@ public class GoodsshelvesServiceImpl implements GoodsshelvesService {
 	}
 
 	@Override
-	public List<Goodsshelves> getPageList(Integer currentPageNo, Integer pageSize) {
-		Integer startIndex=(currentPageNo-1)*pageSize;
+	public List<Goodsshelves> getPageList(Integer currentPageNo3, Integer pageSize) {
+		Integer startIndex=(currentPageNo3-1)*pageSize;
 		return goodsshelvesMapper.getPageList(startIndex, pageSize);
 	}
 

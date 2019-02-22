@@ -7,5 +7,5 @@ import com.warehouse.pojo.Region;
 public interface RegionService {
 
 	int getRegionList();
-    List<Region> getPageList(Integer currentPageNo,Integer pageSize);
+    List<Region> getPageList(Integer currentPageNo2,Integer pageSize);
 }

@@ -7,5 +7,5 @@ import com.warehouse.pojo.Goodsshelves;
 public interface GoodsshelvesService {
 	
 	 int getGoodsshelvesList();
-	    List<Goodsshelves> getPageList(Integer currentPageNo,Integer pageSize);
+	    List<Goodsshelves> getPageList(Integer currentPageNo3,Integer pageSize);
 }

@@ -20,8 +20,8 @@ public class RegionServiceImpl implements RegionService {
 	}
 
 	@Override
-	public List<Region> getPageList(Integer currentPageNo, Integer pageSize) {
-		Integer startIndex=(currentPageNo-1)*pageSize;
+	public List<Region> getPageList(Integer currentPageNo2, Integer pageSize) {
+		Integer startIndex=(currentPageNo2-1)*pageSize;
 		return regionMapper.getPageList(startIndex, pageSize);
 	}
 

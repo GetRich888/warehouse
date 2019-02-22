@@ -24,8 +24,8 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public List<Stock> getPageList(Integer currentPageNo, Integer pageSize) {
-		Integer startIndex=(currentPageNo-1)*pageSize;
+	public List<Stock> getPageList(Integer currentPageNo4, Integer pageSize) {
+		Integer startIndex=(currentPageNo4-1)*pageSize;
 		return stockMapper.getPageList(startIndex, pageSize);
 	}
 	
