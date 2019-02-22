@@ -20,4 +20,13 @@ public class powerController {
 	public String roleManage() {
 		return "/powerSystem/admin-role";
 	}
+	
+	/**
+	 * 角色添加模块
+	 * @return
+	 */
+	@RequestMapping("/roleAdd")
+	public String roleAdd() {
+		return "/powerSystem/admin-role-add";
+	}
 }
