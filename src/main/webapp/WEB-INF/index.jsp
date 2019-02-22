@@ -91,8 +91,8 @@
 			<dd>
 				<ul>
 					<li><a data-href="roleManage" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-					<li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-					<li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
+					<li><a data-href="permission" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="adminList" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 			</ul>
 		</dd>
 	</dl>
