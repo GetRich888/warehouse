@@ -1,7 +1,19 @@
 package com.warehouse.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.WebUtils;
+
+import com.warehouse.pojo.adminManage.Role;
+import com.warehouse.service.RoleService;
 
 /**
  * 权限管理控制器
@@ -10,7 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
+@RequestMapping("/Admin")
 public class powerController {
+	
+	@Autowired
+	RoleService roleService;
 	
 	/**
 	 * 角色管理模块
@@ -54,5 +70,29 @@ public class powerController {
 	@RequestMapping("/adminAdd")
 	public String adminAdd() {
 		return "/powerSystem/admin-add";
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * 角色查询
+	 * @return
+	 */
+	@RequestMapping("/roleSelect")
+	@ResponseBody
+	public List<Role> roleSelect(ServletRequest request) {
+		Map<String, Object> requirement = requestConvertMap(request);
+		Assert.notNull(null, "aaaaaaaaa");
+		List<Role> roleSelect = roleService.roleSelect(requirement);
+		return roleSelect;
+	}
+	
+	public Map<String,Object> requestConvertMap(ServletRequest sr){
+		Map<String, Object> parametersStartingWith = WebUtils.getParametersStartingWith(sr,"");
+		
+		return parametersStartingWith;
 	}
 }
