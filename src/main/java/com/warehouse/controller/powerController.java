@@ -22,7 +22,7 @@ import com.warehouse.service.RoleService;
  */
 
 @Controller
-@RequestMapping("/Admin")
+@RequestMapping("/admin")
 public class powerController {
 	
 	@Autowired
@@ -85,7 +85,7 @@ public class powerController {
 	@ResponseBody
 	public List<Role> roleSelect(ServletRequest request) {
 		Map<String, Object> requirement = requestConvertMap(request);
-		Assert.notNull(null, "aaaaaaaaa");
+		
 		List<Role> roleSelect = roleService.roleSelect(requirement);
 		return roleSelect;
 	}

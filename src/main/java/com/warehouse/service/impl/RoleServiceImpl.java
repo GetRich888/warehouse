@@ -10,7 +10,7 @@ import com.warehouse.mapper.RoleMapper;
 import com.warehouse.pojo.adminManage.Role;
 import com.warehouse.service.RoleService;
 
-@Service("roleServiceImpl")
+@Service("roleService")
 public class RoleServiceImpl implements RoleService{
 
 	@Autowired
