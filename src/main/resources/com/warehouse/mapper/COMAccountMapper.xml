@@ -10,6 +10,13 @@
   <sql id="Base_Column_List">
     id, account, remaining, bank_name
   </sql>
+  
+  <select id="selectCOMAccountInfo" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List" />
+	from t_com_account
+  </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
