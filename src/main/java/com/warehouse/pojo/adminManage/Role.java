@@ -9,6 +9,8 @@ public class Role {
 
     private Integer department_id;
 
+    private String comment;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +41,13 @@ public class Role {
 
     public void setDepartment_id(Integer department_id) {
         this.department_id = department_id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment == null ? null : comment.trim();
     }
 }

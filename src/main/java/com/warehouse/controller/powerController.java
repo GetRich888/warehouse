@@ -7,6 +7,7 @@ import javax.servlet.ServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,7 +34,9 @@ public class powerController {
 	 * @return
 	 */
 	@RequestMapping("/roleManage")
-	public String roleManage() {
+	public String roleManage(Model model) {
+		 List<Role> roleQuery = roleQuery(null);
+		model.addAttribute("data", roleQuery);
 		return "/powerSystem/admin-role";
 	}
 	
@@ -86,6 +89,16 @@ public class powerController {
 	public List<Role> roleSelect(ServletRequest request) {
 		Map<String, Object> requirement = requestConvertMap(request);
 		
+		List<Role> roleQuery = roleQuery(requirement);
+		return roleQuery;
+	}
+	
+	/**
+	 * 角色查询 --查询数据库
+	 * @param requirement
+	 * @return
+	 */
+	public List<Role> roleQuery(Map<String, Object> requirement){
 		List<Role> roleSelect = roleService.roleSelect(requirement);
 		return roleSelect;
 	}

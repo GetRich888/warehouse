@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="isEffective" jdbcType="INTEGER" property="isEffective" />
     <result column="department_id" jdbcType="INTEGER" property="department_id" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
   </resultMap>
   
   <select id="selectRole" resultMap="BaseResultMap">
