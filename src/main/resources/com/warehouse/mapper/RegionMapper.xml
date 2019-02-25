@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.RegionMapper">
+  <resultMap id="BaseResultMap" type="com.warehouse.pojo.Region">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="l_id" jdbcType="INTEGER" property="l_id" />
+    <result column="r_name" jdbcType="VARCHAR" property="r_name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, l_id, r_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from region
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="getRegionList" resultType="int">
+  	SELECT COUNT(1) FROM Region
+  </select>
+	<select id="getPageList" resultMap="BaseResultMap">
+		SELECT * FROM Region LIMIT #{startIndex},#{pageSize}
+	</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from region
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.warehouse.pojo.Region">
+    insert into region (id, l_id, r_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{l_id,jdbcType=INTEGER}, #{r_name,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.warehouse.pojo.Region">
+    insert into region
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="l_id != null">
+        l_id,
+      </if>
+      <if test="r_name != null">
+        r_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="l_id != null">
+        #{l_id,jdbcType=INTEGER},
+      </if>
+      <if test="r_name != null">
+        #{r_name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warehouse.pojo.Region">
+    update region
+    <set>
+      <if test="l_id != null">
+        l_id = #{l_id,jdbcType=INTEGER},
+      </if>
+      <if test="r_name != null">
+        r_name = #{r_name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warehouse.pojo.Region">
+    update region
+    set l_id = #{l_id,jdbcType=INTEGER},
+      r_name = #{r_name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
