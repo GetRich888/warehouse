@@ -76,13 +76,10 @@
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 财务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">账户信息</a></li>
-					<li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
-					<li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
-					<li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
-					<li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
-					<li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
-					<li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
+					<li><a data-href="/finance/accountInfo" data-title="账户信息" href="javascript:void(0)">账户信息</a></li>
+					<li><a data-href="/finance/paymentDoc" data-title="付款单" href="javascript:void(0)">付款单</a></li>
+					<li><a data-href="/finance/receiptsDoc" data-title="收款单" href="javascript:void(0)">收款单</a></li>
+					<li><a data-href="/finance/profitAnalysis" data-title="利润分析" href="javascript:void(0)">利润分析</a></li>
 			</ul>
 		</dd>
 	</dl>
