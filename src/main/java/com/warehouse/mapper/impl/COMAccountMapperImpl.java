@@ -2,6 +2,7 @@ package com.warehouse.mapper.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.warehouse.mapper.COMAccountMapper;
@@ -10,6 +11,7 @@ import com.warehouse.pojo.COMAccount;
 @Service("cOMAccountMapper")
 public class COMAccountMapperImpl implements COMAccountMapper {
 
+	@Autowired
 	private COMAccountMapper cOMAccountMapper;
 	
 	@Override
