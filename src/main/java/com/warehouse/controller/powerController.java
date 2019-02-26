@@ -7,13 +7,18 @@ import javax.servlet.ServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.WebUtils;
 
+import com.warehouse.pojo.adminManage.Personnel;
+import com.warehouse.pojo.adminManage.Power;
 import com.warehouse.pojo.adminManage.Role;
+import com.warehouse.service.PersonnelService;
+import com.warehouse.service.PowerService;
 import com.warehouse.service.RoleService;
 
 /**
@@ -28,6 +33,12 @@ public class powerController {
 	
 	@Autowired
 	RoleService roleService;
+	
+	@Autowired
+	PowerService powerService;
+	
+	@Autowired
+	PersonnelService personnelService;
 	
 	/**
 	 * 角色管理模块
@@ -54,7 +65,11 @@ public class powerController {
 	 * @return
 	 */
 	@RequestMapping("/permission")
-	public String permission() {
+	public String permission(Model model) {
+		//查询权限集合 (默认条件)
+		List<Power> queryPower = powerService.queryPower(null);
+		 
+		model.addAttribute("data",queryPower);
 		return "/powerSystem/admin-permission";
 	}
 	
@@ -63,7 +78,11 @@ public class powerController {
 	 * @return
 	 */
 	@RequestMapping("/adminList")
-	public String adminList() {
+	public String adminList(Model model) {
+		
+		List<Personnel> queryPersonnel = personnelService.queryPersonnel(null);
+		model.addAttribute("data", queryPersonnel);
+		
 		return "/powerSystem/admin-list";
 	}
 	/**
@@ -95,14 +114,37 @@ public class powerController {
 	
 	/**
 	 * 角色查询 --查询数据库
-	 * @param requirement
+	 * @param require
 	 * @return
 	 */
-	public List<Role> roleQuery(Map<String, Object> requirement){
-		List<Role> roleSelect = roleService.roleSelect(requirement);
+	public List<Role> roleQuery(Map<String, Object> require){
+		List<Role> roleSelect = roleService.roleSelect(require);
 		return roleSelect;
 	}
 	
+	@RequestMapping("/roleInsert")
+	@ResponseBody
+	@Transactional
+	public int roleInsert(Role role) {
+		
+		try {
+			int roleInsert = roleService.roleInsert(role);
+			return roleInsert;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+		
+		
+	}
+	
+	
+	
+	/**
+	 * 条件转换 --将请求参数转换为Map
+	 * @param sr
+	 * @return
+	 */
 	public Map<String,Object> requestConvertMap(ServletRequest sr){
 		Map<String, Object> parametersStartingWith = WebUtils.getParametersStartingWith(sr,"");
 		

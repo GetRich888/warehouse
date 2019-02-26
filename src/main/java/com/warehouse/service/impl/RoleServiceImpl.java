@@ -18,8 +18,14 @@ public class RoleServiceImpl implements RoleService{
 	
 	@Override
 	public List<Role> roleSelect(Map<String, Object> requirement) {
-		
-		return roleMapper.selectRole(requirement);
+		List<Role> selectRole = roleMapper.selectRole(requirement);
+		return selectRole;
+	}
+
+	@Override
+	public int roleInsert(Role role) {
+		int insertSelective = roleMapper.insertSelective(role);
+		return insertSelective;
 	}
 	
 }

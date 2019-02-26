@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -76,6 +78,25 @@
 				<td class="td-status"><span class="label radius">已停用</span></td>
 				<td class="td-manage"><a style="text-decoration:none" onClick="admin_start(this,'10001')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe615;</i></a> <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','2','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 			</tr>
+			<c:forEach var="item" items="${data}">
+				
+				<tr class="text-c">
+					<td><input type="checkbox" value="2" name=""></td>
+					<td>${item.id}</td>
+					<td>${item.pname}</td>
+					<td>${item.phone}</td>
+					<td>${item.email}</td>
+					<td>角色查询</td>
+					<td><fmt:formatDate value="${item.entrytime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					
+					
+					<c:if test="${item.quit == 0}"  > <td class="td-status"><span class="label label-success radius">已启用</span></td>  </c:if> 
+					<c:if test="${item.quit == 1}"  > <td class="td-status"><span class="label radius">已关闭</span></td> </c:if> 
+					
+					<td class="td-manage"><a style="text-decoration:none" onClick="admin_start(this,'${item.id}')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe615;</i></a> <a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','admin-add.html','${item.id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_del(this,'${item.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+				
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>
