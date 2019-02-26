@@ -1,7 +1,12 @@
 package com.warehouse.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
 import com.warehouse.pojo.PayPalDoc;
 
+@Mapper
 public interface PayPalDocMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +19,6 @@ public interface PayPalDocMapper {
     int updateByPrimaryKeySelective(PayPalDoc record);
 
     int updateByPrimaryKey(PayPalDoc record);
+    
+    List<PayPalDoc> selectPayDoc();
 }
