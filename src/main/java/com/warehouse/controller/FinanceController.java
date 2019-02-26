@@ -1,15 +1,23 @@
 package com.warehouse.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.warehouse.mapper.impl.COMAccountMapperImpl;
 
 @RequestMapping("/finance")
 @Controller
 public class FinanceController {
 
+	@Autowired
+	private COMAccountMapperImpl cOMAccountMapperImpl;
+	
 	@RequestMapping("/accountInfo")
-	public String finance() {
+	public String finance(Model model) {
 		System.out.println("账户信息");
+		model.addAttribute("AIList", cOMAccountMapperImpl.selectCOMAccountInfo());
 		return "page/finance/accountInfo";
 	}
 
