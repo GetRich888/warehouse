@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.adminManage.Personnel_to_Role">
+  
+  <!-- 通过权限ID查找员工集合 -->
+  <select id="selectPersonnelByRoleId"  resultMap="com.warehouse.mapper.PersonnelMapper.BaseResultMap">
+  	<include refid="com.warehouse.mapper.PersonnelMapper.select"/>
+  	where id in (
+  	select personnel_id from personnel_to_role 
+	<if test="roleId != null">
+		where role_id = ${id,jdbcType=INTEGER}
+	</if>
+	)
+  </select>
+  
+  
+</mapper>

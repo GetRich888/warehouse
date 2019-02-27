@@ -67,7 +67,12 @@
 					<td><input type="checkbox" value="${item.id}" name=""></td>
 					<td>${item.id}</td>
 					<td>${item.name}</td>
-					<td><a href="#">赵六</a>，<a href="#">钱七</a></td>
+					<td>
+						<c:if test="${item.personnelList == null}">没有用户</c:if>
+						<c:forEach var="pItem" items="${item.personnelList}">
+							<a href="#">${pItem.pname}</a>,
+						</c:forEach>
+					</td>
 					<td>${item.comment}</td>
 					<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','/admin/roleAdd',${item.id})" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,${item.id})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 				</tr>
@@ -75,6 +80,7 @@
 		</tbody>
 	</table>
 </div>
+
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>

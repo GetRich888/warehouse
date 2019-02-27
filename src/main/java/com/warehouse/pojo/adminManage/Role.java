@@ -1,5 +1,7 @@
 package com.warehouse.pojo.adminManage;
 
+import java.util.List;
+
 public class Role {
     private Integer id;
 
@@ -10,8 +12,18 @@ public class Role {
     private Integer department_id;
 
     private String comment;
+    
+    private List<Personnel> personnelList;
 
-    public Integer getId() {
+    public List<Personnel> getPersonnelList() {
+		return personnelList;
+	}
+
+	public void setPersonnelList(List<Personnel> personnelList) {
+		this.personnelList = personnelList;
+	}
+
+	public Integer getId() {
         return id;
     }
 

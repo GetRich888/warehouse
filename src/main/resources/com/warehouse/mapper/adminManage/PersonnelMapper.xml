@@ -13,65 +13,21 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
   </resultMap>
   
-  <select id="selectPersonnel" resultMap="BaseResultMap">
-  	select * from personnel
-  </select>
+  <sql id="select">
+  	select id,pname,ppassword,d_id,entrytime,quit,quittime,phone,email from personnel
+  </sql>
   
-  <insert id="insert" parameterType="com.warehouse.pojo.adminManage.Personnel">
-    insert into personnel (id, pname, ppassword, 
-      d_id, entrytime, quit, 
-      quittime)
-    values (#{id,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{ppassword,jdbcType=VARCHAR}, 
-      #{d_id,jdbcType=INTEGER}, #{entrytime,jdbcType=TIMESTAMP}, #{quit,jdbcType=INTEGER}, 
-      #{quittime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.warehouse.pojo.adminManage.Personnel">
-    insert into personnel
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="pname != null">
-        pname,
-      </if>
-      <if test="ppassword != null">
-        ppassword,
-      </if>
-      <if test="d_id != null">
-        d_id,
-      </if>
-      <if test="entrytime != null">
-        entrytime,
-      </if>
-      <if test="quit != null">
-        quit,
-      </if>
-      <if test="quittime != null">
-        quittime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="pname != null">
-        #{pname,jdbcType=VARCHAR},
-      </if>
-      <if test="ppassword != null">
-        #{ppassword,jdbcType=VARCHAR},
-      </if>
-      <if test="d_id != null">
-        #{d_id,jdbcType=INTEGER},
-      </if>
-      <if test="entrytime != null">
-        #{entrytime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="quit != null">
-        #{quit,jdbcType=INTEGER},
-      </if>
-      <if test="quittime != null">
-        #{quittime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
+  <select id="selectPersonnel" resultMap="BaseResultMap">
+  	 <include refid="select"/>
+  </select>
+  <!-- 
+  <select id="selectPersonnelByRoleId" resultMap="com.warehouse.mapper.PersonnelMapper.BaseResultMap">
+  <include refid="select"/>
+  	where id in (
+  	select personnel_id from personnel_to_role 
+	<if test="_parameter  != null">
+		where role_id = ${id,jdbcType=INTEGER}
+	</if>
+	)
+  </select> -->
 </mapper>
